@@ -1,5 +1,17 @@
 Spécificité techniques du projet à élaborer:
+-------------------------------------------
 
 L'architecture utilisée est l'architecture en couche.
 
-Projet_triV4.py
+Le fichier Projet_triV4.py contient l'architecture du code à complèter par la fonction tri-rapide.
+
+Bibliothèques utilisées
+-------------------------------------------
+
+- pandas (manipulation et l'analyse des données)
+- numpy  (tableau)
+- plotly (manipulation graphique)
+
+
+
+
