@@ -111,12 +111,63 @@ def Reverse(maTable):
         i = i + 1
         x = x - 1
     print (maTable)
-        
-def triRapide(maTable, left, right):
-    
-    #méthode de tri rapide récursive à complèter
- 
-      
+
+def triRapide(maTable, left, right, niveau = 0, position=""):
+    if left < right:
+        print("Niveau récursion {0}{1} - Indices {2} à {3}".format(niveau, position, left, right))
+        splitpoint = partition(maTable, left, right)
+        print("Point de coupure indice {0}".format(splitpoint))
+
+        triRapide(maTable, left, splitpoint - 1, niveau + 1, position + ".gauche")
+        triRapide(maTable, splitpoint + 1, right, niveau + 1, position + ".droite")
+    else:
+        print("Niveau {0}{1} - Rien à faire".format(niveau, position))
+
+def afficheTableau(maTable):
+    s = ""
+    for k in range(0, len(maTable)):
+        s += '{0: <{width}}|'.format(maTable[k], width=3)
+    print(s)
+
+def afficheIndex(maTable, indexpivot, left, right):
+    if left < right:
+        print("   |" * indexpivot + " X |" + "   |" * (left - indexpivot - 1) + " ^ " + "|   " * (
+                    right - left - 1) + "| ^ " + "|   " * (len(maTable) - right))
+    elif left == right:
+        print("   |" * indexpivot + " X |" + "   |" * (left - indexpivot - 1) + " ^ " + "|   " * (
+                    len(maTable) - right))
+
+def partition(maTable, left, right):
+    pivotvalue = maTable[left]
+    print("Le pivot est:", pivotvalue)
+    i = left + 1
+    j = right
+    afficheIndex(maTable, left, i, j)
+    done = False
+    while not done:
+        while i <= j and maTable[i] <= pivotvalue:
+            i = i + 1
+            afficheIndex(maTable, left, i, j)
+        while maTable[j] >= pivotvalue and j >= i:
+            j = j - 1
+            afficheIndex(maTable, left, i, j)
+        if j < i:
+            done = True
+            print("Terminé avec le pivot ", pivotvalue)
+        else:
+            temp = maTable[i]
+            maTable[i] = maTable[j]
+            maTable[j] = temp
+            print("Échange de {0} et {1} et on continue avec le même pivot".format(maTable[i], maTable[j]))
+            afficheTableau(maTable)
+
+    temp = maTable[left]
+    maTable[left] = maTable[j]
+    maTable[j] = temp
+    print("Échange de {0} et {1}".format(maTable[left], maTable[j]))
+    afficheTableau(maTable)
+    return j
+
 #**********************************************************************
 # Couche données (Data)
 #**********************************************************************			
