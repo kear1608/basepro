@@ -1,5 +1,5 @@
 # Projet Tri - Base de la programmation - Eric Derasse (2017)
-# Auteurs :
+# Auteurs :Ariel Keutcha
 
 # codage utilisé pour les accents
 # coding=utf-8
